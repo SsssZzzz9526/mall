@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: mall
+  profiles:
+    active: dev
+
+mybatis-plus:
+  mapper-locations: /mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+  # 原生mybatis配置项
+  configuration:
+    # MyBatis 自动映射策略
+    # AutoMappingBehavior.PARTIAL：只对非嵌套的 resultMap 进行自动映射
+    auto-mapping-behavior: partial
+    map-underscore-to-camel-case: true
+
+jwt:
+  tokenHeader: Authorization
+  secret: mall-admin-secret
+  # 7 * 24 * 60 * 60
+  expiration: 604800
+  tokenPrefix: 'Bearer'
+
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList'
+  expire:
+    # 24 * 60 * 60
+    common: 86400
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      - /webjars/springfox-swagger-ui/**
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /admin/info
+      - /admin/logout
