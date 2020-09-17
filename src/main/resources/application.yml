@@ -9,6 +9,8 @@ spring:
 
 mybatis-plus:
   mapper-locations: /mapper/**/*.xml
+  # 自定义类型处理器
+  type-handlers-package: com.gaffey.mall.common.typehandler
   global-config:
     db-config:
       id-type: auto
